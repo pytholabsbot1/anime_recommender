@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>recommender</title>
+        
+    </head>
+
+<body>
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    
+    <div id="rwrapper">
+        <h2 id="rec"></h2>
+        <div id="rec_anime">
+
+        </div>
+    </div>
+    
+    <div class="search_div">
+        <input type="search_inp" class="search-box" placeholder="search"/>
+        <button id="submit">submit</button>
+      </div>
+
+      <div id="add">
+
+      </div>
+
+      <br>
+      
+      
+    
+      <script>
+
+          var res;
+          function post(){
+            res = $.getJSON({url:"/message",data:{query:$(".search-box").val(),control:0}},function(data) {
+            console.log("clikced ");
+            
+            $("#add").empty();
+            $.each(res.responseJSON, function(key,valueObj){
+                console.log(key);
+                $("#add").append('<br><a href="/recommend?queryId='+key+'">'+valueObj+"</a>");
+            });
+            });
+            
+          }
+
+          $("#submit").click(post);
+    </script>
+</body>
+
+</html>

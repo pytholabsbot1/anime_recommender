@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Recommended anime</title>
+    </head>
+
+    <body>
+        
+        <h2>Recommendation for {{ q }}</h2>
+        <div id="wrapper">
+
+            {% for key, value in users.items() %}
+
+                <img src="{{ value }}" style="height: 30% !important;">></img>
+                <span>{{ key }}</span><br>
+              {% endfor %}
+
+        </div>
+    </body>
+</html>
